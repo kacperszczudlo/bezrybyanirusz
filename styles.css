@@ -383,6 +383,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s;
+  overflow: hidden; /* Prevent overflow */
 }
 
 .cart-modal-content h2 {
@@ -421,6 +422,72 @@ body {
 
 .cart-modal-content button:hover {
   background-color: #0056b3;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  gap: 10px; /* Add spacing between elements */
+}
+
+.cart-item span:first-child {
+  flex: 1;
+  text-align: left;
+  word-break: break-word; /* Prevent text overflow */
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-end;
+  flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.cart-item-controls button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  width: 36px; /* Fixed width */
+  height: 36px; /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item-controls button:hover {
+  background-color: #0056b3;
+}
+
+.cart-item-controls .quantity {
+  font-size: 1rem;
+  font-weight: bold;
+  width: 36px; /* Match button width */
+  text-align: center;
+}
+
+.cart-item-controls .price {
+  font-size: 1rem;
+  color: #333;
+  width: 80px; /* Fixed width for price */
+  text-align: right;
+}
+
+.cart-item-controls .remove-item {
+  width: 36px; /* Match button width */
+  height: 36px; /* Match button height */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .trash-icon {
@@ -734,12 +801,31 @@ body {
   .filters { flex-direction: column; align-items: center; }
   .filters input, .filters select, .filters button { width: 100%; max-width: 300px; }
   body, .hero, .hero h1, .hero p, .fishing-spots, .fishing-spots h1, .fishing-spots p, .footer, .footer p, .fish-atlas, .fish-atlas h2, .fish-grid, .column, .column h3, .fish-item, .fish-item img { cursor: auto; }
+  .cart-modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .cart-item {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start;
+  }
+
+  .cart-item-controls {
+    justify-content: space-between;
+    width: 100%; /* Full width for controls */
+  }
+
+  .cart-item-controls .price {
+    text-align: left; /* Align price to the left */
+    width: auto; /* Allow price to adjust dynamically */
+  }
 }
 
 /* Hide fish cursor on tablet and mobile */
 @media (max-width: 1023px) {
   #fish {
-    display: none;
+    display: none !important; /* Ensure fish is hidden on tablets and below */
   }
 }
 
